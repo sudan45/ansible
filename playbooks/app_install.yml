@@ -1,0 +1,14 @@
+---
+- name: Install and Uninstall package
+  hosts: localhost
+
+  tasks:
+    - name: Test Connectivity
+      ping:
+
+    - name: Uninstall Zoom
+      community.general.homebrew_cask:
+        name: zoom
+        state: absent
+
+

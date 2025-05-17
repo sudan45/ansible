@@ -1,0 +1,21 @@
+---
+- name: Install necessary tools
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: install git
+      apt:
+        name: git
+        state: present
+
+    - name: Install Ngnix
+      apt:
+        name: nginx
+        state: present
+
+    - name: Checking status and enbale install
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
