@@ -1,0 +1,33 @@
+---
+- name: File Modules
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Copy file into remote
+      copy:
+        src: ../inventory.ini
+        dest: /tmp
+        mode: ugo=rw
+        backup: true
+
+    - name: Create a file
+      file:
+        path: /tmp/apeksha.txt
+        state: touch
+
+    - name: Create a folder
+      file:
+        path: /home/vivobook/Desktop/testing
+        state: directory
+
+    - name: Delete a file
+      file:
+        path: /tmp/apeksha.txt
+        state: absent
+
+    - name: Delete a folder
+      file:
+        path: /home/vivobook/Desktop/testing
+        state: absent
+
